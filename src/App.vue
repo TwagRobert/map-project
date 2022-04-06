@@ -21,14 +21,14 @@ export default defineComponent({
     const loader = new Loader({ apiKey: GOOGLE_MAPS_API_KEY })
     let  mapDiv = ref(null)
   
-    // onMounted(async () => {
-    //   await loader.load()
-    //   new google.maps.Map(mapDiv.value, {
-    //     center: currPos.value,
-    //     zoom: 7
-    //   }) 
+    onMounted(async () => {
+      await loader.load()
+      new google.maps.Map(mapDiv.value, {
+        center: currPos.value,
+        zoom: 5
+      }) 
 
-    // })
+    })
 
     return { currPos, mapDiv}
 
@@ -46,15 +46,15 @@ export default defineComponent({
         <div class="container">
             <h1>Map project</h1>
 
-            <!-- <div ref="mapDiv" style="width: 100%; height: 80vh" /> -->
+            <div ref="mapDiv" style="width: 100%; height: 80vh" />
 
-            <img src="./assets/img_snow.jpg" alt="Snow">
+            <!-- <img src="./assets/img_snow.jpg" alt="Snow"> -->
             <div class="buttons">
                 <button class="btn1">Teleport me to somewhere random</button>
                 <button class="btn2">Bring me back home</button>
             </div>
 
-            <div class="coordinates">
+            <div class="coordinates"> 
                 <ul>
                     <li>Latitude: {{ currPos.lat.toFixed(2) }}</li>
                     <li>longitude:  {{ currPos.lng.toFixed(2) }}</li>
